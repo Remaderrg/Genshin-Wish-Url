@@ -7,3 +7,5 @@ RU
 4) Запустите файл через PowerShell 
 5) После запуска нажмите Enter, после впишите 1 и снова Enter. Ссылка показана и скопирована
 6) Закройте PowerShell  и вставьте ссылку в браузер, либо на paimon.moe
+
+Original code: https://github.com/vilibs/GenshinWishUrlExtractor
