@@ -1,5 +1,13 @@
 $OutputLogTxtFilePath = $env:USERPROFILE + "\AppData\LocalLow\miHoYo\Genshin Impact\output_log.txt"
-$script:OutputLogTxtFileExists = Test-Path $OutputLogTxtFilePath
+if (-Not (Test-Path $OutputLogTxtFilePath)) {
+    return Write-Host "not exist"
+}
 $OutputLogTxt = Get-Content $OutputLogTxtFilePath
-$WishUrl = $OutputLogTxt -match "^OnGetWebViewPageFinish.*/log" -replace "OnGetWebViewPageFinish:" 
-Set-Clipboard $WishUrl
+$WishUrls = $OutputLogTxt -match "^OnGetWebViewPageFinish.*/log" -replace "OnGetWebViewPageFinish:"
+if (-Not $WishUrls) {
+    return Write-Host "not found"
+}
+foreach ($URL in $WishUrls) {
+    Write-Host $URL
+}
+Set-Clipboard $WishUrls[-1]
